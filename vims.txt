@@ -1,0 +1,145 @@
+:help
+: helpgrep
+:h normal-index
+:help insert-index
+
+vimtutor -g fr
+
+484  locate defaults.vim
+485  vim /usr/share/vim/vim82/defaults.vim
+
+ - plugin vim status line. watch dog
+
+
+w -> next word         <- b previuos worde 
+e -> end of the word   <- ge back to the previous end of the word.
+
+0 : start of the current line
+^ : start of the first word of the current line. ????
+$ : end of the current line.<CR> 
+- : start of the previous line.
+{ start of the current paragraph
+} end of the current paragraph.
+
+N%
+				
+				Y
+				E
+				A
+CTRL			R	
+
+				T
+				D
+				
+				V insert a special character
+				
+				W delete
+				O back to normal mode for ONE command
+				
+SEARCHING: sed -ish
+this&that : find this and then find that at the same position: /.*if&.*key
+ *
+ #
+ <xxxx  /\v<msgstr
+ <xxxx\>  /\v<msgstr\>
+ 
+yank all search results: :g/^match/normal "Ayy or :g/^match/yank A
+SEARCH AND REPLACE:
+:10,33s/<pattern>/<replacement> current line
+:10s/<pattern>/<replacement> current line just line number 10
+:-10,33s/<pattern>/<replacement> 10 lines before the current line, 33 lines after the current line
+:-10;33s/<pattern>/<replacement> 10 lines before the current line, then 33 lines after this line.
+:.,$s/<pattern>/<replacement>/gc
+99: === :.,+98
+:%s/<pattern>/<replacement>/gc the entire file
+:<body>/+n,/<\/body>/s/<I>/<EM>/gc double search and substitution.
+:?foo?+1, $-10/<pattern>/<replacement>/gc
+
+
+
+ 
+ 
+ 
+ 
+ 
+ SEARCH AND REPLACE:
+ gc
+ dc ?
+ 
+ GLOBAL COMMAND:
+ :g/^match/normal "Ayy or :g/^match/yank A
+ :global ( global command : :g  /pattern/<colon command to that line)
+ :g /^\s/:center -> center all INDENTED  lines
+ :g! /^\s/:center -> center all NOT INDENTED LINES of those lines
+ : /<ISBN>/:normal  gUU  convert everything to upperCASE
+ global command ranges ?
+ :g /./ :.;/^$/join ( match any character /./ and from that line ....)
+ :g /./ :.;/^$/-1 join remove the empy line at the end.
+ 
+:g /matchpairs/y A
+:g /matchpairs/:normal gUU
+:g /./ :.;/^$/join  convert all paragraphe to a single line :
+
+CTRLX XTRLD define symbols
+:set define=^\\s*sub --> CTRLX CTRLD
+
+CTRLX CTRLN -> identifiers definition
+( :set iskeyword=a-z,A-Z,48-57,-,._,>  identifiers list
+
+CTRLX CTRLI included files C, C++ like.
+
+CTRLX CTRLO omni-completion (intellisense in eclipse)
+help compl-omni-filetype
+help complete-functions
+-> understand the source code ctags.sourceforge.net
+$RUNTIME/autoload/<filetype>complete.vim
+
+setup
+:filetype plugin on
+set omnifunc=javascriptcompletion#CompleteJS
+
+
+VISUAL
+- character v
+- line V
+- block ( column mode )CTRL V
+CTRLV {motion} I {text} Insert {text} before block on every line
+CTRLV {motion} A {text} After {text} before block on every line
+CTRLV {motion} c {text} Change every line of block to {text}
+CTRLV {motion} r {text} Change every character  of block to {char}
+
+vip -> the surrounding paragraph
+
+vipJ -> paragraph to single line.
+gv -> reselect the same block 
+
+:set cursorline 	 set nocursorline
+:set cursorcolumn    set nocursorcolumn
+
+FOLDING
+zf<motion> zfip - >paragraph  zf/<pattern> -> currentline to the pattern
+NzF Number of line 
+
+zf{ -> fold paragraph , 20zF fold 20lines
+
+zo - To open up a folded line 
+zc - To close a fold again
+zn - To unfold everything
+zi - To toogle all fold
+zd - to delete a fold
+ze to rliminiate all folds
+
+OPEN CLOSE FOLDING AUTOMATICALLY.
+set foldopen=all
+set foldclose=all
+
+fold guidebars
+set foldcolumn=6  disable => set foldcomlum&
+
+
+OTHER major features: maps and abbreviations, 
+registers, marks, virtual editing, digraphs, windows,
+tabbed editing, binary files, syntax highlihting,
+visual quickfix mode, sessions, views, autoformatting,
+mode lines, persistent editing, autorecovery,
+session recording, and scripting.
