@@ -1,12 +1,46 @@
 :help
-: helpgrep
+: helpgrep /pattern/
 :h normal-index
 :help insert-index
+:h xml, json
 
+cnext
+cprev
+cnfile
+cpfile
+
+nmap <silent> <RIGHT>	:cnext<CR>
+nmap <silent> <LEFT>	:cprev<CR>
+nmap <silent> <RIGHT><RIGHT>	:cnfile<CR><C-G>
+nmap <silent> <LEFT><LEFT>	:cpfile<CR><C-G>
+
+:vimgrep /pattren/
+
+https://vimsnake.com/
+
+set matchpairs+=<:>
+set matchpairs+=":"
+set matchpairs+==:; 
+
+plugin: matchit.vim
+
+:set backspace=indent,eol,start
+
+nnoremap  /  /\v   
+Find java and line at the same position : /.*Java\&.*line
+\<for\>
+just type * to find the next instance
+		  # to find the previous.
+
+:set ignorecase
+:set smartcase
+:set incsearch	
+:set hlsearch
+turn off thehightligth : nmap <silent> <BS>  :nohlsearch<CR>	  
 vimtutor -g fr
 
-484  locate defaults.vim
-485  vim /usr/share/vim/vim82/defaults.vim
+locate defaults.vim
+vim /usr/share/vim/vim82/defaults.vim
 
  - plugin vim status line. watch dog
 
