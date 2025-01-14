@@ -36,7 +36,53 @@ just type * to find the next instance
 :set smartcase
 :set incsearch	
 :set hlsearch
-turn off thehightligth : nmap <silent> <BS>  :nohlsearch<CR>	  
+turn off the hightligth : nmap <silent> <BS>  :nohlsearch<CR>
+
+DO a search and manipulate the result found:
+
+10. Search and REPLACE
+. If you use a semi-colon instead of a coma:
+  :-10;+33s/<pattern>/<replacement>
+. ... then the end of the range is relative to the start of the range,
+. So the semicoloned version means:
+	"from 10 lines above the cursor for the following 33 lines"
+:.,$s/<pattern>/<replacement> for the current line to the rest of the file, ...	
+99: => :.,+98 
+:%s/<pattern>/<subs> => current buffer.
+:/<body>/,/<\/body>/s/<I>/<EM>/
+:?foo?+1,$-10s/<pattern>/<replacement>
+
+colon commands => :command eg :sort
+:%s/cat/felin/gc request confirmation
+. Often you want to repeat the last substitution on anotherline
+. You can do that with just:
+:s<CR>
+. Or use the Normal-mode shorcut => :&
+or globaly => :g&
+
+GLOBAL COMMAND
+:g /^\s/ : center => center all indented line
+:!g /^\s/ : center => center all NON indented line
+:g /<ISBN>/ :normal gUU  ( global command executin normal command)
+:g /./ :.;/^$/join ( the interested range in the global command)convert paragraph to one line.
+:g /./ :.;/^$/-1join ( the interested range in the global command)
+
+COPY SMARTER
+yy or Y
+yw copy word
+y$ => current position to the end of the line.
+y}
+y{
+y/<regex><CR> eg y/__END__<CR>
+yaw
+yaW
+yas
+yap
+. All these text objects include any whitespace following the objects
+. To exclude trailling whitespace, change a (for "and after") to an i ( for "in itself")
+
+plugin: yankmatches.vim  
+
 vimtutor -g fr
 
 locate defaults.vim
